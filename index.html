@@ -1,111 +1,152 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>会动的比卡丘</title>
     <style>
-        *{
-          margin:0px;
-          padding:0px;
-          box-sizing:border-box;
+        * {
+            margin: 0px;
+            padding: 0px;
+            box-sizing: border-box;
         }
-        *::before{
-          box-sizing:border-box;
+
+        *::before {
+            box-sizing: border-box;
         }
-        *::after{
-          box-sizing:border-box;
+
+        *::after {
+            box-sizing: border-box;
         }
-        body{
-          height:100vh;
-          display:flex;
-          justify-content:center;
-          align-items:center;
-          background:#FFE600;
+
+        body {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #FFE600;
         }
-        .wrap{
-          background:#FFE600;
-          height:178px;
-          width:316px;
-          border:1px solid red;
-          position:relative;
+
+        .wrap {
+            background: #FFE600;
+            height: 178px;
+            width: 316px;
+            border: 1px solid red;
+            position: relative;
         }
-        .nodes{
-          top:25px;
-          left:50%;
-          position:absolute;
-          border-radius:35%/45%;
-          border:12px solid;
-          border-color:#000000 transparent transparent;
-          transform:translateX(-50%);
+
+        .nodes {
+            top: 25px;
+            left: 50%;
+            position: absolute;
+            border-radius: 35%/45%;
+            border: 12px solid;
+            border-color: #000000 transparent transparent;
+            transform: translateX(-50%);
         }
-        .eyeLeft{
-          height:46px;
-          background:#2E2E2E;
-          width:46px;
-          border-radius:50%;
-          position:absolute;
-          top:0px;
-          left:46px;
-          border:2px solid #000000;
+
+        .eyeLeft {
+            height: 46px;
+            background: #2E2E2E;
+            width: 46px;
+            border-radius: 50%;
+            position: absolute;
+            top: 0px;
+            left: 46px;
+            border: 2px solid #000000;
         }
-        .eyeLeft::before{
-          content:'';
-          display:block;
-          height:22px;
-          width:22px;
-          border-radius:50%;
-          background:#FFFFFF;
-          border:2px solid #000000;
-          transform:translateX(4px);
-          position:absolute;
-          top:-1px;
+
+        .eyeLeft::before {
+            content: '';
+            display: block;
+            height: 22px;
+            width: 22px;
+            border-radius: 50%;
+            background: #FFFFFF;
+            border: 2px solid #000000;
+            transform: translateX(4px);
+            position: absolute;
+            top: -1px;
         }
-          .eyeRight{
-          height:46px;
-          background:#2E2E2E;
-          width:46px;
-          border-radius:50%;
-          position:absolute;
-          top:0px;
-          right:46px;
-          border:2px solid #000000;
+
+        .eyeRight {
+            height: 46px;
+            background: #2E2E2E;
+            width: 46px;
+            border-radius: 50%;
+            position: absolute;
+            top: 0px;
+            right: 46px;
+            border: 2px solid #000000;
         }
-          .eyeRight::before{
-          content:'';
-          display:block;
-          height:22px;
-          width:22px;
-          border-radius:50%;
-          background:#FFFFFF;
-          border:2px solid #000000;
-          transform:translateX(4px);
-          position:absolute;
-          top:-1px;
+
+        .eyeRight::before {
+            content: '';
+            display: block;
+            height: 22px;
+            width: 22px;
+            border-radius: 50%;
+            background: #FFFFFF;
+            border: 2px solid #000000;
+            transform: translateX(4px);
+            position: absolute;
+            top: -1px;
         }
-        .leftFace{
-          position:absolute;
-          height:65px;
-          width:65px;
-          background:#FF0000;
-          border-radius:50%;
-          border:2px solid black;
-          top:82px;
-          left:0px;
+
+        .leftFace {
+            position: absolute;
+            height: 65px;
+            width: 65px;
+            background: #FF0000;
+            border-radius: 50%;
+            border: 2px solid black;
+            top: 82px;
+            left: 0px;
         }
-        .rightFace{
-          position:absolute;
-          height:65px;
-          width:65px;
-          background:#FF0000;
-          border-radius:50%;
-          border:2px solid black;
-          top:82px;
-          right:0px;
+
+        .rightFace {
+            position: absolute;
+            height: 65px;
+            width: 65px;
+            background: #FF0000;
+            border-radius: 50%;
+            border: 2px solid black;
+            top: 82px;
+            right: 0px;
         }
-      </style>
+
+        .topLeftLip {
+            height: 22px;
+            width: 63px;
+            border: 2px solid #000000;
+            border-bottom-left-radius: 1600px 800px;
+            border-top: none;
+            border-right: none;
+            position: absolute;
+            top: 48px;
+            /*left:93px;如果按照左边定位，放大后嘴巴会改变 */
+            right: 50%;
+            transform: rotate(-25deg)
+        }
+
+        .topRightLip {
+            height: 22px;
+            width: 63px;
+            border: 2px solid #000000;
+            border-bottom-right-radius: 1600px 800px;
+            border-top: none;
+            border-left: none;
+            position: absolute;
+            top: 48px;
+            /* right:93px;如果按照右边定位，放大后嘴巴会改变 */
+            left: 50%;
+            transform: rotate(25deg);
+        }
+    </style>
 </head>
+
 <body>
     <div class='wrap'>
         <div class="nodes"></div>
@@ -113,6 +154,9 @@
         <div class="eyeRight"></div>
         <div class="leftFace"></div>
         <div class="rightFace"></div>
-      </div>
+        <div class="topLeftLip"></div>
+        <div class="topRightLip"></div>
+    </div>
 </body>
+
 </html>

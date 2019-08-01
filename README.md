@@ -10,3 +10,32 @@
       border:12px solid;
       border-color:#000000 transparent transparent;
 ```
+* 嘴巴部分稍微有点难度，上嘴唇
+```
+        .topLeftLip {
+            height: 22px;
+            width: 63px;
+            border: 2px solid #000000;
+            border-bottom-left-radius: 1600px 800px;
+            border-top: none;
+            border-right: none;
+            position: absolute;
+            top: 48px;
+            /*left:93px;如果按照左边定位，放大后嘴巴会改变 */
+            right: 50%;
+            transform: rotate(-25deg)
+        }
+
+        .topRightLip {
+            height: 22px;
+            width: 63px;
+            border: 2px solid #000000;
+            border-bottom-right-radius: 1600px 800px;
+            border-top: none;
+            border-left: none;
+            position: absolute;
+            top: 48px;
+            /* right:93px;如果按照右边定位，放大后嘴巴会改变 */
+            left: 50%;
+            transform: rotate(25deg);
+```
