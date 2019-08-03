@@ -40,8 +40,9 @@
             transform: rotate(25deg);
 ```
 * 下嘴唇和舌头，要用到[overflow:hidden](https://developer.mozilla.org/en-US/docs/Web/CSS/overflow)，这个是由父元素（父元素中非static元素）的范围来决定，所以这里设置了两个父元素：
-1. lip里面包括了上下嘴唇。这里因为还要涉及到互相覆盖的问题，所以使用了[z-index](https://developer.mozilla.org/zh-CN/docs/Web/CSS/z-index)
+1. lip里面包括了上下嘴唇。这里因为还要涉及到互相覆盖的问题，所以使用了[z-index](https://developer.mozilla.org/zh-CN/docs/Web/CSS/z-index)，为了上嘴唇把下嘴唇遮住，所以上嘴唇的颜色和背景颜色都设置为黄色，为了遮住下嘴唇。
 2. lowerLip里面包括了舌头。
+3. 1和2也可以用伪元素::before和::after也可以，这样伪元素前面的那个选择器就可以作为一个父元素来使用overflow:hidden.
 ```
     <div class="lip">
      <div class="topLeftLip"></div>
@@ -50,4 +51,9 @@
             <div class="tongue"></div>
      </div>
     </div>
+```
+* 定位按照中线来定位，这样放大后也不会改变位置，
+* 给手机端做适配
+```
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
 ```
