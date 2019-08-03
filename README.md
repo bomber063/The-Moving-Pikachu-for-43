@@ -39,3 +39,15 @@
             left: 50%;
             transform: rotate(25deg);
 ```
+* 下嘴唇和舌头，要用到[overflow:hidden](https://developer.mozilla.org/en-US/docs/Web/CSS/overflow)，这个是由父元素（父元素中非static元素）的范围来决定，所以这里设置了两个父元素：
+1. lip里面包括了上下嘴唇。这里因为还要涉及到互相覆盖的问题，所以使用了[z-index](https://developer.mozilla.org/zh-CN/docs/Web/CSS/z-index)
+2. lowerLip里面包括了舌头。
+```
+    <div class="lip">
+     <div class="topLeftLip"></div>
+     <div class="topRightLip"></div>
+     <div class="lowerLip">
+            <div class="tongue"></div>
+     </div>
+    </div>
+```
