@@ -1,4 +1,18 @@
-let code=`
+!function () {
+    let code = `
+.outwrap{
+    /* flex:1; */
+    position: relative;
+    background: #FFE600;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width:100vw;
+    border:1px solid red;
+    height: 50vh;
+    top:50%;
+}
+
 .nodes {
     top: 25px;
     left: 50%;
@@ -148,11 +162,20 @@ let code=`
     border-radius: 80%/50%;
 }
 `
-let n=0
-
-setInterval(() => {
-    n=n+1
-    precode.innerText=code.slice(0,n)
-    stylecode.innerText=code.slice(0,n)
-    precode.scrollTop=precode.scrollHeight
-}, 5);
+    let n = 0
+    function writecode(beforeCode, nowCode, fn) {
+        let id = setInterval(() => {
+            console.log(id)
+            n = n + 1
+            precode.innerText = nowCode.slice(0, n)
+            stylecode.innerText = nowCode.slice(0, n)
+            precode.scrollTop = precode.scrollHeight
+            if (n >= code.length) {
+                window.clearTimeout(id)
+            }
+            fn() && fn.call()
+        }, 0);
+    }
+    writecode('', code, () => {
+    })
+}()
