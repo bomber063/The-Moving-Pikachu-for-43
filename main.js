@@ -1,45 +1,5 @@
-* {
-    margin: 0px;
-    padding: 0px;
-    box-sizing: border-box;
-}
-
-*::before {
-    box-sizing: border-box;
-}
-
-*::after {
-    box-sizing: border-box;
-}
-
-body {
-    height: 100vh;
-    /* display: flex; */
-    /* justify-content: center; */
-    /* align-items: center; */
-    /* background: #FFE600; */
-}
-.outwrap{
-    position: relative;
-    background: #FFE600;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width:100vw;
-    border:1px solid red;
-    height: 50vh;
-    top:50%;
-}
-.wrap {
-    /* background: #FFE600; */
-    /* height: 178px; */
-    /* width: 100vw; */
-    position: absolute;
-    /* height:50vh; */
-    top:20%;
-}
-
-/* .nodes {
+let code=`
+.nodes {
     top: 25px;
     left: 50%;
     position: absolute;
@@ -47,9 +7,9 @@ body {
     border: 12px solid;
     border-color: #000000 transparent transparent;
     transform: translateX(-50%);
-} */
+}
 
-/* .eyeLeft {
+.eyeLeft {
     height: 46px;
     background: #2E2E2E;
     width: 46px;
@@ -59,9 +19,9 @@ body {
     left: 50%;
     transform: translateX(-113px);
     border: 2px solid #000000;
-} */
+}
 
-/* .eyeLeft::before {
+.eyeLeft::before {
     content: '';
     display: block;
     height: 22px;
@@ -72,9 +32,9 @@ body {
     transform: translateX(4px);
     position: absolute;
     top: 0px;
-} */
+}
 
-/* .eyeRight {
+.eyeRight {
     height: 46px;
     background: #2E2E2E;
     width: 46px;
@@ -84,9 +44,9 @@ body {
     right: 50%;
     transform: translateX(113px);
     border: 2px solid #000000;
-} */
+}
 
-/* .eyeRight::before {
+.eyeRight::before {
     content: '';
     display: block;
     height: 22px;
@@ -97,9 +57,9 @@ body {
     transform: translateX(4px);
     position: absolute;
     top: 0px;
-} */
+}
 
-/* .leftFace {
+.leftFace {
     position: absolute;
     height: 65px;
     width: 65px;
@@ -109,9 +69,9 @@ body {
     top: 82px;
     left: 50%;
     transform: translateX(-158px);
-} */
+}
 
-/* .rightFace {
+.rightFace {
     position: absolute;
     height: 65px;
     width: 65px;
@@ -121,9 +81,9 @@ body {
     top: 82px;
     right: 50%;
     transform: translateX(158px);
-} */
+}
 
-/* .lip {
+.lip {
     position: absolute;
     overflow: hidden;
     height: 130px;
@@ -131,9 +91,9 @@ body {
     top: 48px;
     left: 50%;
     transform: translateX(-50%);
-} */
+}
 
-/* .topLeftLip {
+.topLeftLip {
     height: 22px;
     width: 63px;
     border: 2px solid #000000;
@@ -143,12 +103,12 @@ body {
     position: absolute;
     top: -7px;
     /*left:93px;如果按照左边定位，放大后嘴巴会改变 */
-    /* right: 50%; */
-    /* transform: rotate(-25deg); */
-    /* background: #FFE600; */
-/* } */ 
+    right: 50%;
+    transform: rotate(-25deg);
+    background: #FFE600;
+}
 
-/* .topRightLip {
+.topRightLip {
     height: 22px;
     width: 63px;
     border: 2px solid #000000;
@@ -158,12 +118,12 @@ body {
     position: absolute;
     top: -7px;
     /* right:93px;如果按照右边定位，放大后嘴巴会改变 */
-    /* left: 50%; */
-    /* transform: rotate(25deg); */
-    /* background: #FFE600; */
-/* } */ 
+    left: 50%;
+    transform: rotate(25deg);
+    background: #FFE600;
+}
 
-/* .lowerLip {
+.lowerLip {
     position: absolute;
     border: 4px solid black;
     border-radius: 55%/50%;
@@ -175,9 +135,9 @@ body {
     background: #9B000A;
     z-index: -1;
     overflow: hidden;
-} */
+}
 
-/* .tongue {
+.tongue {
     bottom: 0px;
     left: 50%;
     transform: translateX(-50%);
@@ -186,14 +146,13 @@ body {
     height: 100px;
     width: 100px;
     border-radius: 80%/50%;
-} */
-
-#precode{
-    position:absolute;
-    height:50vh;
-    width:100vw;
-    top:0px;
-    border:1px solid blue;
-    overflow:scroll;
 }
+`
+let n=0
 
+setInterval(() => {
+    n=n+1
+    precode.innerText=code.slice(0,n)
+    stylecode.innerText=code.slice(0,n)
+    precode.scrollTop=precode.scrollHeight
+}, 5);
