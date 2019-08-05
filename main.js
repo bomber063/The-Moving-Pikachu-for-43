@@ -9,7 +9,6 @@
     justify-content: center;
     align-items: center;
     width:100vw;
-    border:1px solid red;
     height: 50vh;
     top:50%;
 }
@@ -117,7 +116,6 @@
     border-right: none;
     position: absolute;
     top: -7px;
-    /*left:93px;如果按照左边定位，放大后嘴巴会改变 */
     right: 50%;
     transform: rotate(-25deg);
     background: #FFE600;
@@ -132,7 +130,6 @@
     border-left: none;
     position: absolute;
     top: -7px;
-    /* right:93px;如果按照右边定位，放大后嘴巴会改变 */
     left: 50%;
     transform: rotate(25deg);
     background: #FFE600;
@@ -165,19 +162,42 @@
 /*完成，这只皮卡丘送给你*/
 `
     let n = 0
+    let duration=20
     function writecode(beforeCode, nowCode, fn) {
-        let id = setInterval(() => {
-            console.log(id)
+         setTimeout(function a() {
             n = n + 1
             precode.innerText = nowCode.slice(0, n)
             stylecode.innerText = nowCode.slice(0, n)
             precode.scrollTop = precode.scrollHeight
-            if (n >= code.length) {
-                window.clearTimeout(id)
+            // if (n >= nowCode.length) {
+            //     window.clearTimeout(id)
+            // }
+            if(n<nowCode.length){//因为这里是setTimeout，只执行一次，所以不需要为了停止闹钟来设置id
+                setTimeout(a, duration)//这里的duration就是新的延迟时间
             }
-            fn() && fn.call()
-        }, 15);
+            else{
+                fn()
+            }
+        },duration)
     }
-    writecode('', code, () => {
-    })
+
+    writecode('',code,()=>{console.log('完成')})
+    // function changeSpeed(){//函数里面的赋值是不能逃脱这个函数作用域范围的，所以不能写为函数
+        $('.allButton').on('click','button',function (e){
+            $(e.currentTarget).addClass('active').siblings().removeClass('active')
+            let b=$(e.currentTarget).attr('speed')
+            if (b==='50'){
+                duration=50
+            }
+            else if(b==='20'){
+                duration=20
+            }
+            else if(b==='0'){
+                duration=0
+            }
+        })
+    // }
+    
 }()
+
+

@@ -198,9 +198,30 @@ body {
     height:50vh;
     width:100vw;
     top:0px;
-    border:1px solid blue;
     overflow:scroll;
     padding:10px;
     /* flex:1; */
+}
+.allButton{
+    position:absolute;
+    top:0;
+    right:20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.allButton>button{
+    padding:10px;
+    background: #ddd;
+    margin:10px;
+}
+.allButton>button:focus{
+    outline:none;
+    /* 这个写不写都不影响，方方老师的默认有focue，我这里没有focus的样式，可能是每个浏览器的显示效果不同 */
+}
+
+.allButton>button.active{
+    box-shadow: 1px 1px 1px rgba(0,0,0,0.8);
+    padding:10px;
 }
 

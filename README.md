@@ -65,10 +65,10 @@
 body {
     height: 100vh;
     display: flex;
-    flex-direction: column;
+    flex-direction: column;//设置竖直方向
 }
 .outwrap{
-    flex:1;
+    flex:1;//它是一份
     position: relative;
     background: #FFE600;
     display: flex;
@@ -79,7 +79,7 @@ body {
 #precode{
     border:1px solid blue;
     overflow:scroll;
-    flex:1;
+    flex:1;//它也占用一份
 }
 ```
 * 我自己没有用flex定位，用的是vh和vw来设置宽高，效果差不多
@@ -119,3 +119,97 @@ body {
 /*皮卡丘的舌头*/
 /*完成，这只皮卡丘送给你*/
 ```
+### 增加调速的功能
+#### 犯的错误
+* 当我在增加button的时候我把button放到的**相互重叠的div代码的最前面**，因为后面的div如果范围覆盖了button，那么就无法点中button了。所以需要把增加的button放到所有**相互重叠的div代码的最后面**，或者如果**想放到相互重叠的div代码前面，需要加上z-index比重叠的大才行**。
+* 函数返回的错误，比如下面的代码的b返回的是绑定事件里面的函数，我错把这个返回的值作为延迟函数的时间
+```
+$('.allButton').on('click','button',function (e){
+    $(e.currentTarget).addClass('active').siblings().removeClass('active')
+    let b=$(e.currentTarget).attr('speed')
+    return b
+})
+```
+* 另外函数里面的赋值是不能逃脱这个函数作用域范围的，所以不能写为函数
+```
+    // function changeSpeed(){//函数里面的赋值是不能逃脱这个函数作用域范围的，所以不能写为函数
+        $('.allButton').on('click','button',function (e){
+            $(e.currentTarget).addClass('active').siblings().removeClass('active')
+            let b=$(e.currentTarget).attr('speed')
+            if (b==='50'){
+                duration=50
+            }
+            else if(b==='20'){
+                duration=20
+            }
+            else if(b==='5'){
+                duration=5
+            }
+        })
+    // }
+```
+#### 继续
+* 绑定事件要**通过e.currentTarget找到所触发事件的元素**.
+#### 这里需要把setInterval改为setTimeout
+* 因为setInterval只会读一遍延迟的时间，以后都不会去读取了，所以不能修改这个延迟时间，修改为setTimeout之后就可以修改延迟事件了，只是需要给函数一个名字，匿名函数和箭头函数(箭头函数就是匿名函数)是不能用setTimeout来不停的延迟的
+```
+         setTimeout(function a() {//需要给函数一个名字，这里给名字为a
+            n = n + 1
+            precode.innerText = nowCode.slice(0, n)
+            stylecode.innerText = nowCode.slice(0, n)
+            precode.scrollTop = precode.scrollHeight
+            if(n<nowCode.length){//因为这里是setTimeout，只执行一次，所以不需要为了停止闹钟来设置id，当然最好是写上id
+                setTimeout(a, duration)//这里的duration就是新的延迟时间
+            }
+            else{
+                fn()
+            }
+        },duration)
+```
+* 除了以上的方法你还可以使用[arguments.callee](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Functions/arguments/callee) 属性包含当前正在执行的函数。**但是不推荐，因为这个API已经弃用了**.
+* callee 是 arguments 对象的一个属性。它可以用于引用该函数的函数体内当前正在执行的函数。这在函数的名称是未知时很有用，例如在没有名称的函数表达式 (也称为“匿名函数”)内。
+* 我这里的用的条件判断是if..else if，并且我设置的属性名字为speed，并且已经把延迟的速度写好了
+* html中
+```
+    <div class='allButton'>
+        <button class='slow' speed='50'>慢速</button>
+        <button class='normal' speed='20'>中速</button>
+        <button class='fast' speed='5'>快速</button>
+    </div>
+```
+* js中
+```
+        $('.allButton').on('click','button',function (e){
+            $(e.currentTarget).addClass('active').siblings().removeClass('active')
+            let b=$(e.currentTarget).attr('speed')
+            if (b==='50'){
+                duration=50
+            }
+            else if(b==='20'){
+                duration=20
+            }
+            else if(b==='5'){
+                duration=5
+            }
+        })
+```
+* 老师用的是[switch-case](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Statements/switch),switch 语句评估一个表达式，将表达式的值与case子句匹配，并执行与该情况相关联的语句。
+* 老师的HTML中的属性给的是slow，normal和fast
+```
+switch(speed){
+    case'slow':
+    duration=100
+    break
+    case'normal':
+    duration=50
+    break
+    case'fast':
+    duration=10
+    break
+}
+```
+### git hub上忽略的目录设置
+* 忽略的目录git hub不会上传，比如需要在项目文件夹新建一个名为 .gitignore的文件。放在这里面的文件就不会上传到git hub上去。
+* **但是有时候忽略的目录，git hub会上传，但是显示的是一个空，导致代码读取出错**
+### 其他
+* git rm 目录，就是删除某一个目录，他也会把源文件删除，如果不想删除源文件，就后面机上--cached，比如git rm --cashed 目录。(这个我还没有测试过)
