@@ -21,7 +21,7 @@ body {
     /* display: flex; */
     /* flex-direction: column; */
 }
-
+/* 这里写outwrap主要是为了黄色的定位直接在下面，如果不写会从上面突然跳到下面，会显得很突兀 */
  .outwrap{
     /* flex:1; */
     position: relative;

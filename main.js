@@ -1,5 +1,6 @@
 !function () {
     let code = `
+/*首先准备皮卡丘黄色的皮肤*/
 .outwrap{
     /* flex:1; */
     position: relative;
@@ -12,7 +13,7 @@
     height: 50vh;
     top:50%;
 }
-
+/*皮卡丘的鼻子*/
 .nodes {
     top: 25px;
     left: 50%;
@@ -22,7 +23,7 @@
     border-color: #000000 transparent transparent;
     transform: translateX(-50%);
 }
-
+/*皮卡丘的两只眼睛*/
 .eyeLeft {
     height: 46px;
     background: #2E2E2E;
@@ -72,7 +73,7 @@
     position: absolute;
     top: 0px;
 }
-
+/*皮卡丘的脸颊的红晕*/
 .leftFace {
     position: absolute;
     height: 65px;
@@ -96,7 +97,7 @@
     right: 50%;
     transform: translateX(158px);
 }
-
+/*皮卡丘的嘴巴*/
 .lip {
     position: absolute;
     overflow: hidden;
@@ -150,7 +151,7 @@
     z-index: -1;
     overflow: hidden;
 }
-
+/*皮卡丘的舌头*/
 .tongue {
     bottom: 0px;
     left: 50%;
@@ -161,6 +162,7 @@
     width: 100px;
     border-radius: 80%/50%;
 }
+/*完成，这只皮卡丘送给你*/
 `
     let n = 0
     function writecode(beforeCode, nowCode, fn) {
@@ -174,7 +176,7 @@
                 window.clearTimeout(id)
             }
             fn() && fn.call()
-        }, 0);
+        }, 15);
     }
     writecode('', code, () => {
     })
