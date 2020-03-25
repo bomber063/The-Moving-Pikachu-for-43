@@ -12,6 +12,18 @@
     box-sizing: border-box;
 }
 
+.token.function{
+    color:#DD4A68;
+}
+
+.token.selector{
+    color:#690;
+}
+
+.token.property{
+    color:#905;
+}
+
 body {
     height: 100vh;
     /* display: flex; */

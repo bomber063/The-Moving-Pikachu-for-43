@@ -166,9 +166,10 @@
     function writecode(beforeCode, nowCode, fn) {
          setTimeout(function a() {
             n = n + 1
-            precode.innerText = nowCode.slice(0, n)
-            stylecode.innerText = nowCode.slice(0, n)
-            precode.scrollTop = precode.scrollHeight
+            precode.innerHTML = nowCode.slice(0, n)
+             precode.innerHTML=Prism.highlight(precode.innerHTML, Prism.languages.css);
+             stylecode.innerText = nowCode.slice(0, n);
+            precode.scrollTop = precode.scrollHeight;
             // if (n >= nowCode.length) {
             //     window.clearTimeout(id)
             // }

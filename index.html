@@ -7,37 +7,44 @@
         content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>用代码画一只比卡丘</title>
+    <link rel="stylesheet" href="vendor/prism/prism.css">
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/style.css">
     <style id='stylecode'>
     </style>
 </head>
 
 <body>
-    <pre id='precode'></pre>
-    <div class="outwrap">
-        <div class='wrap'>
-            <div class="nodes"></div>
-            <div class="eyeLeft"></div>
-            <div class="eyeRight"></div>
-            <div class="leftFace"></div>
-            <div class="rightFace"></div>
-            <!--     因为要做一个hidden,所以需要包起来设置边界，联合z-index来设置 -->
-            <div class="lip">
-                <div class="topLeftLip"></div>
-                <div class="topRightLip"></div>
-                <div class="lowerLip">
-                    <div class="tongue"></div>
-                </div>
+<audio autoplay loop src="./vendor/Pikachu.mp3"></audio>
+
+<pre id='precode'></pre>
+<div class="outwrap">
+    <div class='wrap'>
+        <div class="nodes"></div>
+        <div class="eyeLeft"></div>
+        <div class="eyeRight"></div>
+        <div class="leftFace"></div>
+        <div class="rightFace"></div>
+        <!--     因为要做一个hidden,所以需要包起来设置边界，联合z-index来设置 -->
+        <div class="lip">
+            <div class="topLeftLip"></div>
+            <div class="topRightLip"></div>
+            <div class="lowerLip">
+                <div class="tongue"></div>
             </div>
         </div>
     </div>
-    <div class='allButton'>
-        <button class='slow' speed='50'>慢速</button>
-        <button class='normal active' speed='20'>中速</button>
-        <button class='fast' speed='0'>快速</button>
-    </div>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="main.js"></script>
+</div>
+<div class='allButton'>
+    <button class='slow' speed='50'>慢速</button>
+    <button class='normal active' speed='20'>中速</button>
+    <button class='fast' speed='0'>快速</button>
+</div>
+<audio autoplay loop src="./vendor/Pikachu.mp3"></audio>
+
+<script src="vendor/prism/prism.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="main.js"></script>
 </body>
 
 </html>
